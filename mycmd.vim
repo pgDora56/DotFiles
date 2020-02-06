@@ -24,7 +24,7 @@ function s:roughWithDate(...)
 endfunction
 
 function s:roughfile(filename)
-    execute "cd D:\\rough"
+    execute "cd D:\\rough" 
     execute "e " . a:filename
 endfunction
 
