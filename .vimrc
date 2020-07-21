@@ -33,7 +33,6 @@ set foldmethod=indent
 set foldcolumn=3
 set foldlevel=100
 
-
 nnoremap <silent><ESC><ESC> :nohl<CR>
 nnoremap <Up> <Nop>
 nnoremap <Down> <Nop>
@@ -43,11 +42,16 @@ nnoremap <silent><C-@> :NERDTreeToggle<CR>
 nnoremap <F5> :tabe ~/dotfiles/.vimrc<CR>
 nnoremap <F6> :tabe ~/dotfiles/_gvimrc<CR>
 nnoremap <C-F5> :tabe ~/dotfiles/mycmd.vim<CR>
+nnoremap <C-s> :terminal ++close ++curwin ubuntu<CR>
 nnoremap x "_x
-autocmd BufNewFile,BufRead *.py nnoremap <C-e> :!python %
+autocmd BufNewFile,BufRead *.py nnoremap <C-e> :!py %
 autocmd BufNewFile,BufRead *.hs nnoremap <C-e> :!stack ghci %
 autocmd BufNewFile,BufRead *.ltx nnoremap <silent><C-e> :!ptex2pdf -l -ot -kanji=utf8 -synctex=1 %<CR>
 autocmd BufNewFile,BufRead *.rs nnoremap <C-e> :!cargo run<CR>
+autocmd BufNewFile,BufRead *.go nnoremap <C-e> :!go run %<CR>
+
+exe "set rtp+=".globpath($GOPATH, "src/github.com/nsf/gocode/vim")
+
 "#####dein設定#####
 " プラグインがインストールされるディレクトリ
 let s:dein_dir = expand('~/.cache/dein')
@@ -98,6 +102,9 @@ noremap <C-P> :Unite buffer<CR>
 noremap <C-N> :Unite -buffer-name-file file<CR>
 noremap <C-Z> :Unite file_mru<CR>
 noremap :uff :<C-u>UniteWithBufferDir file -buffer-name=file<CR>
+noremap <C-J> :bprev<CR>
+noremap <C-K> :bnext<CR>
+
 au FileType unite nnoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
 au FileType unite inoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
 
@@ -117,3 +124,17 @@ autocmd BufRead,BufNewFile *.md set filetype=markdown
 let g:previm_open_cmd = 'start'
 nnoremap <silent> <C-e> :PrevimOpen<CR>
 
+"=== mkdir setting
+augroup vimrc-auto-mkdir  " {{{
+  autocmd!
+  autocmd BufWritePre * call s:auto_mkdir(expand('<afile>:p:h'), v:cmdbang)
+  function! s:auto_mkdir(dir, force)  " {{{
+    if !isdirectory(a:dir) && (a:force ||
+    \    input(printf('"%s" does not exist. Create? [y/N]', a:dir)) =~? '^y\%[es]$')
+      call mkdir(iconv(a:dir, &encoding, &termencoding), 'p')
+    endif
+  endfunction  " }}}
+augroup END  " }}}
+
+"=== colorscheme setting
+colorscheme shirotelin

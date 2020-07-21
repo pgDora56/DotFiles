@@ -2,6 +2,7 @@ command -nargs=1 Fnt call s:fontchange(<f-args>)
 command Py !python %
 command Ghci !stack ghci %
 command Ghc !stack exec -- runghc %
+command Stack !stack build --test --file-watch
 command Tex !ptex2pdf -l -ot -kanji=utf8 -synctex=1 %<CR>
 command Mocho call s:mocho()
 command -nargs=? Mtime call s:nowtime(<f-args>)
@@ -51,7 +52,9 @@ function s:nowtime(...)
     let nowtime = strftime("%m月%d日%H時%M分")
     let loctime = localtime()
     if a:0 >= 1
-        if a:1 == "r"
+        if a:1 == "help"
+            echo("(o・∇・o)<引数によって私が「r:記録開始, b:終了, 引数なし:現在時刻&経過時間」をお知らせするよ!")
+        elseif a:1 == "r"
             echo ("(o・∇・o)<すたーと～ いま" . nowtime . "です～がんばっていこ～")
             let s:timerec = loctime
         elseif a:1 == "b"

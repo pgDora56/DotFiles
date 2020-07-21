@@ -33,3 +33,6 @@ repo = 'jacoborus/tender.vim'
 
 [[plugins]]
 repo = 'jesseduffield/lazygit'
+
+[[plugins]]
+repo = 'yasukotelin/shirotelin'
