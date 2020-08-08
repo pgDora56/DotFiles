@@ -32,6 +32,7 @@ set backspace=indent,eol,start
 set foldmethod=indent
 set foldcolumn=3
 set foldlevel=100
+set shell=C:\Windows\System32\wsl.exe
 
 nnoremap <silent><ESC><ESC> :nohl<CR>
 nnoremap <Up> <Nop>
@@ -44,7 +45,7 @@ nnoremap <F6> :tabe ~/dotfiles/_gvimrc<CR>
 nnoremap <C-F5> :tabe ~/dotfiles/mycmd.vim<CR>
 nnoremap <C-s> :terminal ++close ++curwin ubuntu<CR>
 nnoremap x "_x
-autocmd BufNewFile,BufRead *.py nnoremap <C-e> :!py %
+autocmd BufNewFile,BufRead *.py nnoremap <C-e> :!py %<CR>
 autocmd BufNewFile,BufRead *.hs nnoremap <C-e> :!stack ghci %
 autocmd BufNewFile,BufRead *.ltx nnoremap <silent><C-e> :!ptex2pdf -l -ot -kanji=utf8 -synctex=1 %<CR>
 autocmd BufNewFile,BufRead *.rs nnoremap <C-e> :!cargo run<CR>
