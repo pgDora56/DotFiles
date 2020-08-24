@@ -33,13 +33,18 @@ set foldmethod=indent
 set foldcolumn=3
 set foldlevel=100
 
+noremap <C-J> :bprev<CR>
+noremap <C-K> :bnext<CR>
 nnoremap <silent><ESC><ESC> :nohl<CR>
 nnoremap <Up> <Nop>
 nnoremap <Down> <Nop>
 nnoremap <Left> <Nop>
 nnoremap <Right> <Nop>
-nnoremap <silent><C-@> :NERDTreeToggle<CR>
+nnoremap <C-q> :NERDTreeToggle<CR>
 nnoremap x "_x
+nnoremap <C-t> :vnew<CR>:terminal<CR><C-w>L
+nnoremap Q gq
+tnoremap <Esc> <C-\><C-n>
 autocmd BufNewFile,BufRead *.py nnoremap <C-e> :!py %<CR>
 autocmd BufNewFile,BufRead *.hs nnoremap <C-e> :!stack ghci %
 autocmd BufNewFile,BufRead *.ltx nnoremap <silent><C-e> :!ptex2pdf -l -ot -kanji=utf8 -synctex=1 %<CR>
@@ -61,8 +66,7 @@ noremap <C-P> :Unite buffer<CR>
 noremap <C-N> :Unite -buffer-name-file file<CR>
 noremap <C-Z> :Unite file_mru<CR>
 noremap :uff :<C-u>UniteWithBufferDir file -buffer-name=file<CR>
-noremap <C-J> :bprev<CR>
-noremap <C-K> :bnext<CR>
+
 
 au FileType unite nnoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
 au FileType unite inoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')

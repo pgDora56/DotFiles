@@ -14,6 +14,9 @@ repo = 'scrooloose/nerdtree'
 repo = 'plasticboy/vim-markdown'
 
 [[plugins]]
+repo = 'Vimjas/vim-python-pep8-indent'
+
+[[plugins]]
 repo = 'kannokanno/previm'
 
 [[plugins]]
@@ -36,3 +39,9 @@ repo = 'jesseduffield/lazygit'
 
 [[plugins]]
 repo = 'yasukotelin/shirotelin'
+
+[[plugins]]
+repo = 'davidhalter/jedi-vim'
+
+[[plugins]]
+repo = 'wakatime/vim-wakatime'
