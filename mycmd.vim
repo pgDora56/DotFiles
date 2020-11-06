@@ -1,20 +1,21 @@
-command -nargs=1 Fnt call s:fontchange(<f-args>)
-command Py !python %
-command Ghci !stack ghci %
-command Ghc !stack exec -- runghc %
-command Stack !stack build --test --file-watch
-command Tex !ptex2pdf -l -ot -kanji=utf8 -synctex=1 %<CR>
-command Mocho call s:mocho()
-command -nargs=? Mtime call s:nowtime(<f-args>)
-command Test call s:test()
-command -nargs=? Rough call s:roughWithDate(<f-args>)
-command -nargs=1 Roughf call s:roughfile(<f-args>)
+command! -nargs=1 Fnt call s:fontchange(<f-args>)
+command! Py !python %
+command! Ghci !stack ghci %
+command! Ghc !stack exec -- runghc %
+command! Stack !stack build --test --file-watch
+command! Tex !ptex2pdf -l -ot -kanji=utf8 -synctex=1 %<CR>
+command! Mocho call s:mocho()
+command! -nargs=? Mtime call s:nowtime(<f-args>)
+command! Test call s:test()
+command! -nargs=? Rough call s:roughWithDate(<f-args>)
+command! -nargs=1 Roughf call s:roughfile(<f-args>)
+command! OpenDiary call s:openDiary()
 
-function s:fontchange(size)
+function! s:fontchange(size)
     execute "set gfn=Myrica_MM:h" . a:size . ":cSHIFTJIS"
 endfunction
 
-function s:roughWithDate(...)
+function! s:roughWithDate(...)
     if a:0 == 0
         execute "cd D:\\rough"
     else
@@ -24,7 +25,7 @@ function s:roughWithDate(...)
     end
 endfunction
 
-function s:roughfile(filename)
+function! s:roughfile(filename)
     execute "cd D:\\rough" 
     execute "e " . a:filename
 endfunction
@@ -48,7 +49,7 @@ function! s:mocho()
 endfunction
 
 let s:timerec = -1
-function s:nowtime(...)
+function! s:nowtime(...)
     let nowtime = strftime("%m月%d日%H時%M分")
     let loctime = localtime()
     if a:0 >= 1
@@ -76,7 +77,7 @@ function s:nowtime(...)
     end
 endfunction
 
-function s:getElapsedTime(loctime)
+function! s:getElapsedTime(loctime)
     let worktime = a:loctime - s:timerec
     let wsec = worktime % 60
     let worktime = worktime / 60
@@ -89,4 +90,29 @@ function s:getElapsedTime(loctime)
         let strtime = wmin . "分" . strtime
     endif
     return strtime
+endfunction
+
+function! s:openDiary()
+    let filename = strftime("/mnt/d/diary.md")
+    execute "e " . filename
+    let heading = "# " . strftime("%Y/%m/%d(%a)")
+    let firstline = getline(1)
+    let idx = match(firstline,heading)
+    if idx < 0
+        execute "normal O" . heading . "\n"
+        execute "normal O\t* "
+        call cursor(2, 417)
+    else
+        let line = 2
+        let lastline = line('$')
+        let haveData = match(getline(line), '\*')
+        while haveData != -1
+            let line = line + 1
+            if line == lastline
+                break
+            endif
+            let haveData = match(getline(line), '\*')
+        endwhile
+        call cursor(line-1, 417)
+    endif
 endfunction

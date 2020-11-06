@@ -45,3 +45,12 @@ repo = 'davidhalter/jedi-vim'
 
 [[plugins]]
 repo = 'wakatime/vim-wakatime'
+
+[[plugins]]
+repo = 'tyru/open-browser.vim'
+
+[[plugins]]
+repo = 'fatih/vim-go'
+
+[[plugins]]
+repo = 'scrooloose/syntastic'
