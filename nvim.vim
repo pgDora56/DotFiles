@@ -32,9 +32,11 @@ set backspace=indent,eol,start
 set foldmethod=indent
 set foldcolumn=3
 set foldlevel=100
+set scrolloff=5
 
 noremap <C-J> :bprev<CR>
 noremap <C-K> :bnext<CR>
+nnoremap <C-m> call OpenDiary<CR> "Duplicate some command
 nnoremap <silent><ESC><ESC> :nohl<CR>
 nnoremap <Up> <Nop>
 nnoremap <Down> <Nop>
@@ -42,7 +44,7 @@ nnoremap <Left> <Nop>
 nnoremap <Right> <Nop>
 nnoremap <C-q> :NERDTreeToggle<CR>
 nnoremap x "_x
-nnoremap <C-t> :vnew<CR>:terminal<CR><C-w>L
+nnoremap <A-t> :vnew<CR>:terminal<CR><C-w>L
 nnoremap Q gq
 tnoremap <Esc> <C-\><C-n>
 autocmd BufNewFile,BufRead *.py nnoremap <C-e> :!py %<CR>
@@ -55,7 +57,7 @@ exe "set rtp+=".globpath($GOPATH, "src/github.com/nsf/gocode/vim")
 
 "#####基本設定#####
 "
-" source ~/.config/nvim/dotfiles/mycmd.vim
+source ~/.config/nvim/dotfiles/mycmd.vim
 
 syntax on
 
@@ -78,14 +80,11 @@ au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
 au FileType unite inoremap <silent> <buffer> <ESC><ESC> :q<CR>
 
 "==== vim-markdown Settings
-let g:vim_markdown_folding_disabled = 1
-let g:vim_markdown_auto_insert_bullets = 0
-let g:vim_markdown_new_list_item_indent = 0
-
 "==== kannokanno/previm Settings
 autocmd BufRead,BufNewFile *.md set filetype=markdown
-let g:previm_open_cmd = 'start'
-nnoremap <silent> <C-e> :PrevimOpen<CR>
+nnoremap <silent> <C-p> :PrevimOpen<CR>
+let g:vim_markdown_folding_disabled=1
+let g:previm_enable_realtime=1
 
 "=== mkdir setting
 augroup vimrc-auto-mkdir  " {{{
@@ -101,3 +100,15 @@ augroup END  " }}}
 
 "=== colorscheme setting
 colorscheme shirotelin
+
+"=== pep8 setting
+let g:syntastic_python_checkers = ["flake8"]
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_enable_signs = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
