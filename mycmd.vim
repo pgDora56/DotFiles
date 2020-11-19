@@ -9,6 +9,7 @@ command -nargs=? Mtime call s:nowtime(<f-args>)
 command Test call s:test()
 command -nargs=? Rough call s:roughWithDate(<f-args>)
 command -nargs=1 Roughf call s:roughfile(<f-args>)
+command -nargs=1 Mkdir call s:mkdir(<f-args>)
 
 function s:fontchange(size)
     execute "set gfn=Myrica_MM:h" . a:size . ":cSHIFTJIS"
@@ -89,4 +90,9 @@ function s:getElapsedTime(loctime)
         let strtime = wmin . "分" . strtime
     endif
     return strtime
+endfunction
+
+function s:mkdir(directory)
+    call mkdir(a:directory)
+    execute "cd " . a:directory
 endfunction
