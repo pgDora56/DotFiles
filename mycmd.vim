@@ -10,6 +10,7 @@ command! Test call s:test()
 command! -nargs=? Rough call s:roughWithDate(<f-args>)
 command! -nargs=1 Roughf call s:roughfile(<f-args>)
 command! OpenDiary call s:openDiary()
+command! DiaryMemo call s:diaryMemo()
 
 function! s:fontchange(size)
     execute "set gfn=Myrica_MM:h" . a:size . ":cSHIFTJIS"
@@ -97,8 +98,14 @@ function s:mkdir(directory)
     execute "cd " . a:directory
 endfunction
 
+function! s:diaryMemo()
+    let today = strftime("%Y%m%d")
+    let filename = today . ".md"
+    execute "tabnew /cvar/memo/" . filename
+endfunction
+
 function! s:openDiary()
-    let filename = strftime("/mnt/d/diary.md")
+    let filename = strftime("/cvar/diary.md")
     execute "e " . filename
     let heading = "# " . strftime("%Y/%m/%d(%a)")
     let firstline = getline(1)
