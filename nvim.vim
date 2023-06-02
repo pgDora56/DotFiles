@@ -58,6 +58,7 @@ exe "set rtp+=".globpath($GOPATH, "src/github.com/nsf/gocode/vim")
 
 "#####基本設定#####
 "
+source ~/.config/nvim/DotFiles/dein.vim
 source ~/.config/nvim/DotFiles/mycmd.vim
 source ~/.config/nvim/DotFiles/autopep8.vim
 

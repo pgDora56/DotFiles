@@ -43,8 +43,8 @@ repo = 'yasukotelin/shirotelin'
 [[plugins]]
 repo = 'davidhalter/jedi-vim'
 
-[[plugins]]
-repo = 'wakatime/vim-wakatime'
+# [[plugins]]
+# repo = 'wakatime/vim-wakatime'
 
 [[plugins]]
 repo = 'tyru/open-browser.vim'
