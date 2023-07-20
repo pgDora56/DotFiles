@@ -40,10 +40,10 @@ nnoremap <C-H> gt
 nnoremap <C-L> gT
 nnoremap <silent><ESC><ESC> :nohl<CR>
 nnoremap <silent><C-q> :NERDTreeToggle<CR>
-nnoremap <silent><C-t><C-t> :TweetVimHomeTimeline<CR>
-nnoremap <C-t>s :TweetVimCommandSay
-nnoremap <silent><C-t>S :TweetVimSay<CR>
-nnoremap <C-t>v :TweetVimListStatuses WatchList<CR>
+" nnoremap <silent><C-t><C-t> :TweetVimHomeTimeline<CR>
+" nnoremap <C-t>s :TweetVimCommandSay
+" nnoremap <silent><C-t>S :TweetVimSay<CR>
+" nnoremap <C-t>v :TweetVimListStatuses WatchList<CR>
 nnoremap x "_x
 nnoremap <A-t> :vnew<CR>:terminal<CR><C-w>L
 nnoremap Q gq
@@ -53,14 +53,16 @@ autocmd BufNewFile,BufRead *.hs nnoremap <C-e> :!stack ghci %
 autocmd BufNewFile,BufRead *.ltx nnoremap <silent><C-e> :!ptex2pdf -l -ot -kanji=utf8 -synctex=1 %<CR>
 autocmd BufNewFile,BufRead *.rs nnoremap <C-e> :!cargo run<CR>
 autocmd BufNewFile,BufRead *.go nnoremap <C-e> :GoRun<CR>
+autocmd BufNewFile,BufRead *.go nnoremap <C-[> :GoDef<CR>
+autocmd BufNewFile,BufRead *.go nnoremap <C-t> :GoDefPop<CR>
 
 exe "set rtp+=".globpath($GOPATH, "src/github.com/nsf/gocode/vim")
 
 "#####基本設定#####
 "
-source ~/.config/nvim/DotFiles/dein.vim
-source ~/.config/nvim/DotFiles/mycmd.vim
-source ~/.config/nvim/DotFiles/autopep8.vim
+source ~/DotFiles/dein.vim
+source ~/DotFiles/mycmd.vim
+source ~/DotFiles/autopep8.vim
 
 syntax on
 
@@ -89,9 +91,9 @@ autocmd BufRead,BufNewFile *.asm set filetype=nasm
 
 "==== vim-markdown Settings
 "==== kannokanno/previm Settings
-nnoremap <silent> <C-p> :PrevimOpen<CR>
-let g:vim_markdown_folding_disabled=1
-let g:previm_enable_realtime=1
+" nnoremap <silent> <C-p> :PrevimOpen<CR>
+" let g:vim_markdown_folding_disabled=1
+" let g:previm_enable_realtime=1
 
 "=== mkdir setting
 augroup vimrc-auto-mkdir  " {{{
@@ -131,5 +133,5 @@ let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 let g:go_fmt_command = "gofmt"
 let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
-" let g:go_metalinter_autosave = 1
+let g:go_metalinter_autosave = 1
 " let g:go_metalinter_autosave_enabled = ['vet']

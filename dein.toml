@@ -4,50 +4,53 @@ repo = 'itchyny/lightline.vim'
 [[plugins]]
 repo = 'Shougo/unite.vim'
 
-[[plugins]]
-repo = 'tpope/vim-fugitive'
+# [[plugins]]
+# repo = 'tpope/vim-fugitive'
 
 [[plugins]]
 repo = 'scrooloose/nerdtree'
 
-[[plugins]]
-repo = 'plasticboy/vim-markdown'
+# [[plugins]]
+# repo = 'plasticboy/vim-markdown'
 
 [[plugins]]
 repo = 'Vimjas/vim-python-pep8-indent'
 
-[[plugins]]
-repo = 'kannokanno/previm'
+# [[plugins]]
+# repo = 'kannokanno/previm'
 
-[[plugins]]
-repo = 'rust-lang/rust.vim'
+# [[plugins]]
+# repo = 'rust-lang/rust.vim'
 
+# 置換をプレビューする
 [[plugins]]
 repo = 'markonm/traces.vim'
 
+# コメントの挿入をスマートに
 [[plugins]]
 repo = 'tomtom/tcomment_vim'
 
-[[plugins]]
-repo = 'tomasr/molokai'
+# [[plugins]]
+# repo = 'tomasr/molokai'
 
-[[plugins]]
-repo = 'jacoborus/tender.vim'
+# [[plugins]]
+# repo = 'jacoborus/tender.vim'
 
-[[plugins]]
-repo = 'jesseduffield/lazygit'
+# [[plugins]]
+# repo = 'jesseduffield/lazygit'
 
 [[plugins]]
 repo = 'yasukotelin/shirotelin'
 
+# Python入力補完
 [[plugins]]
 repo = 'davidhalter/jedi-vim'
 
 # [[plugins]]
 # repo = 'wakatime/vim-wakatime'
 
-[[plugins]]
-repo = 'tyru/open-browser.vim'
+# [[plugins]]
+# repo = 'tyru/open-browser.vim'
 
 [[plugins]]
 repo = 'fatih/vim-go'
@@ -55,17 +58,19 @@ repo = 'fatih/vim-go'
 [[plugins]]
 repo = 'scrooloose/syntastic'
 
-[[plugins]]
-repo = 'basyura/TweetVim'
+# [[plugins]]
+# repo = 'basyura/TweetVim'
 
-[[plugins]]
-repo = 'mattn/webapi-vim'
+# VimからAPIが叩ける
+# [[plugins]]
+# repo = 'mattn/webapi-vim'
 
-[[plugins]]
-repo = 'basyura/twibill.vim'
+# [[plugins]]
+# repo = 'basyura/twibill.vim'
 
+# 関数リストを取得できる
 [[plugins]]
 repo = 'h1mesuke/unite-outline'
 
-[[plugins]]
-repo = 'basyura/bitly.vim'
+# [[plugins]]
+# repo = 'basyura/bitly.vim'
